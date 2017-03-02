@@ -4,5 +4,8 @@
 
 body {
 	font-family: 'Roboto', sans-serif;
+	width: 600px;
+	margin: 0 auto;
+	color: red;
 }
 
