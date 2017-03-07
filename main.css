@@ -2,14 +2,15 @@
 	box-sizing: border-box;
 }
 
-body {
+.container {
 	font-family: 'Roboto', sans-serif;
-	width: 100%;
+	width: 500px;
 	margin: auto;
 	color: blue;
 	text-align: center;
-	height: 600px;height: 
+	height: 700px;height: 
 	background color: beige;
+	border: 2px solid black;
 }
 
 
@@ -17,17 +18,18 @@ body {
 header {
 	height: 15%;
 	border-bottom: solid black 2px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	font-size: 30px;
+	
+	font-size: 20px;
 }
 
 main {
+	margin-top: 50px;
 	height: 70%;
+
 }
 
 .start {
-	margin-top: 300px;
+	margin-top: 50px;
 	size: 200px;
 
 }
@@ -36,10 +38,12 @@ form {
 	text-align: left;
 }
 
-footer {
-	height: 15%;
-	border-top: solid black 2px;
+.current-question {
+	text-align: center;
 }
+footer {
+	
+	}
 
 .running{
 	margin-top: 30px;
