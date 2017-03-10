@@ -41,6 +41,20 @@ form {
 .current-question {
 	text-align: center;
 }
+
+.correct {
+	text-align: center;
+	font-size: 20px;
+}
+
+.next {
+	margin-top: 50px;
+}
+
+.hidden {
+	display: none;
+}
+
 footer {
 	
 	}
