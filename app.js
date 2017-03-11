@@ -39,25 +39,22 @@ var currentQuestion = myQuestions[currentQuestionIndex];
 console.log(currentQuestion);
 
 function answersLoop() {
-	for(var i = 0; i<currentQuestion.answers.length; i ++) {
-		$('.current-answers').append("<input type='radio' name='A' value = '" + i + "'>" + currentQuestion.answers[i] + "<br>");
-	}
-};
-
-function correctOrNot() {
-	if (checked == currentQuestionIndex) {
-		$('.correct').append("You are correct!")
-	} else {
-		$('.correct').append("Incorrect<br> The correct answer is:<br>" + correctAnswer)
-	};
-};
-var checked = $("input[name=A]:checked").val();
-	console.log(checked);
+			for(var i = 0; i<currentQuestion.answers.length; i ++) {
+				$('.current-answers').append("<input type='radio' name='A' value = '" + i + "'>" + currentQuestion.answers[i] + "<br>");
+			}
+		};
 
 //var correctAnswer = [currentQuestion.answers.correctAnswersIndex];
 //console.log(correctAnswer)
 //render question to page
 $("document").ready(function() {
+	function correctOrNot(checked, correctAnswer) {
+			if (checked == currentQuestionIndex) {
+		 		$('.correct').html("You are correct!")
+			} else {
+				$('.correct').html("Incorrect<br> The correct answer is:<br>" + correctAnswer)
+			};
+		}
 	$('.start-button').click(function(event) {
 		event.preventDefault();
 		$(".home").hide("slow");
@@ -66,25 +63,23 @@ $("document").ready(function() {
 		
 		answersLoop();
 		$(".home").hide("slow");
-	});
+	})
 	$(".current-answers").click(function() {
-		
-		console.log(correctOrNot)
 		
 		//Get the value of the checked radio button.
 		$(".current-question").hide("slow");
 		$(".current-answers").hide("slow");
-		
+		var checked = $("input[name=A]:checked").val();
+		console.log(checked);
 		//Use the value to check if it's the same as "correctAnswer".
 		var correctAnswer = currentQuestion.answers[currentQuestion.correctAnswersIndex];
 		console.log("correctAnswer", correctAnswer);
 		//If value of checked radio button is the same as "correct", display "correct".
 		//Else, display ("Incorrect. The correct answer is" + correct);
-		correctOrNot();
+		correctOrNot(checked, correctAnswer);
 		//Show next button by toggling hidden class on click of .current-answers.
 		$(".next").toggleClass("hidden");
-	});
-	
+	})
 	$(".next").click(function () {
 		$(".correct").hide("slow");
 		currentQuestion = myQuestions[currentQuestionIndex +1];
@@ -95,13 +90,14 @@ $("document").ready(function() {
 		$('.current-answers').html(" ");
 		answersLoop();
 		$('.current-answers').show('slow');
-	});
-
+	})
 	$(".current-answers").click(function() {
-		correctOrNot();
+		var checked = $("input[name=A]:checked").val();
+		var correctAnswer = currentQuestion.answers[currentQuestion.correctAnswersIndex];
+		correctOrNot(checked, correctAnswer);
 		//Get the value of the checked radio button.
 		$(".current-question").hide("slow");
 		$(".current-answers").hide("slow");
-	})
+	});
 });
 
