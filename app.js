@@ -43,8 +43,6 @@ $("document").ready(function() {
 
 	var checked = ""
 	console.log("checked", checked);
-	var correctAnswer = currentQuestion.answers[currentQuestion.correctAnswersIndex];
-	console.log("correctAnswer", correctAnswer);
 	
 	function answersLoop() {
 		for(var i = 0; i<currentQuestion.answers.length; i ++) {
@@ -71,7 +69,7 @@ $("document").ready(function() {
 		answersLoop();
 		$(".home").hide("slow");
 	});
-	
+
 	$(".current-answers").click(function() {
 		checked = $("input[name=A]:checked").val();
 		console.log("checked", checked);
@@ -85,21 +83,30 @@ $("document").ready(function() {
 		//Show next button by toggling hidden class on click of .current-answers.
 		$(".next").show("slow");
 	});
+	thisQuestion(myQuestions);
 
-	$(".next").click(function () {
-		$(".correct").hide("slow");
-		$(".next").hide("slow");
-		currentQuestion = myQuestions[currentQuestionIndex + 1];
-		console.log("currentQuestion", currentQuestion);
-		$(".current-question").html(currentQuestion.questionText);
-		$(".current-question").show("slow");
-		console.log("I'm showing");
+	function thisQuestion(questionText) {
+		console.log(questionText);
+		for(var i = 0; i < questionText.length; i++) {
+			console.log(questionText[i].name);
+			/*$(".next").click(function() {
+				$(".correct").hide("slow");
+				console.log(questionText);
+				$(".next").hide("slow");
 		
-		$('.current-answers').html(" ");
-		answersLoop();
-		$('.current-answers').show('slow');
-
-	});
-
+				currentQuestion = myQuestions[currentQuestionIndex];
+				console.log("currentQuestion", currentQuestion);
+		
+				$(".current-question").html(currentQuestion.questionText);
+				$(".current-question").show("slow");
+				console.log("I'm showing");
+		
+				$('.current-answers').html(" ");
+				answersLoop();
+				$('.current-answers').show('slow');
+			});*/
+		};
+	};
 });
+
 
