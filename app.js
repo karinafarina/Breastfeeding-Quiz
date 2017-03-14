@@ -36,25 +36,32 @@ var currentQuestionIndex = 0;
 console.log(currentQuestionIndex);
 
 var currentQuestion = myQuestions[currentQuestionIndex];
-console.log(currentQuestion);
+console.log("currentQuestion",currentQuestion);
 
-function answersLoop() {
-			for(var i = 0; i<currentQuestion.answers.length; i ++) {
-				$('.current-answers').append("<input type='radio' name='A' value = '" + i + "'>" + currentQuestion.answers[i] + "<br>");
-			}
-		};
-
-//var correctAnswer = [currentQuestion.answers.correctAnswersIndex];
-//console.log(correctAnswer)
 //render question to page
 $("document").ready(function() {
+
+	var checked = ""
+	console.log("checked", checked);
+	var correctAnswer = currentQuestion.answers[currentQuestion.correctAnswersIndex];
+	console.log("correctAnswer", correctAnswer);
+	
+	function answersLoop() {
+		for(var i = 0; i<currentQuestion.answers.length; i ++) {
+			$('.current-answers').append("<input type='radio' name='A' value = '" + i + "'>" + currentQuestion.answers[i] + "<br>");
+		}
+	};
+
 	function correctOrNot(checked, correctAnswer) {
+		console.log("test", $('.correct'), correctAnswer);
 			if (checked == currentQuestionIndex) {
 		 		$('.correct').html("You are correct!")
 			} else {
 				$('.correct').html("Incorrect<br> The correct answer is:<br>" + correctAnswer)
 			};
 		}
+		
+
 	$('.start-button').click(function(event) {
 		event.preventDefault();
 		$(".home").hide("slow");
@@ -63,41 +70,36 @@ $("document").ready(function() {
 		
 		answersLoop();
 		$(".home").hide("slow");
-	})
+	});
+	
 	$(".current-answers").click(function() {
-		
+		checked = $("input[name=A]:checked").val();
+		console.log("checked", checked);
 		//Get the value of the checked radio button.
 		$(".current-question").hide("slow");
+		console.log("I'm hiding");
 		$(".current-answers").hide("slow");
-		var checked = $("input[name=A]:checked").val();
-		console.log(checked);
 		//Use the value to check if it's the same as "correctAnswer".
-		var correctAnswer = currentQuestion.answers[currentQuestion.correctAnswersIndex];
-		console.log("correctAnswer", correctAnswer);
-		//If value of checked radio button is the same as "correct", display "correct".
-		//Else, display ("Incorrect. The correct answer is" + correct);
 		correctOrNot(checked, correctAnswer);
+		$(".correct").show("slow");
 		//Show next button by toggling hidden class on click of .current-answers.
-		$(".next").toggleClass("hidden");
-	})
+		$(".next").show("slow");
+	});
+
 	$(".next").click(function () {
 		$(".correct").hide("slow");
-		currentQuestion = myQuestions[currentQuestionIndex +1];
-		console.log(currentQuestion)
+		$(".next").hide("slow");
+		currentQuestion = myQuestions[currentQuestionIndex + 1];
+		console.log("currentQuestion", currentQuestion);
 		$(".current-question").html(currentQuestion.questionText);
 		$(".current-question").show("slow");
-		console.log(currentQuestion);
+		console.log("I'm showing");
+		
 		$('.current-answers').html(" ");
 		answersLoop();
 		$('.current-answers').show('slow');
-	})
-	$(".current-answers").click(function() {
-		var checked = $("input[name=A]:checked").val();
-		var correctAnswer = currentQuestion.answers[currentQuestion.correctAnswersIndex];
-		correctOrNot(checked, correctAnswer);
-		//Get the value of the checked radio button.
-		$(".current-question").hide("slow");
-		$(".current-answers").hide("slow");
+
 	});
+
 });
 
