@@ -36,9 +36,21 @@ var myQuestions = [
 var currentQuestionIndex = 0;
 
 var runningScore = 0;
+
+var whatNumber = 1;
 //render question to page
 $("document").ready(function() {
 	var checked = "";
+
+	function currentNumber(whatNumber, myQuestions) {
+
+		if(whatNumber < myQuestions.length -1) {
+			return whatNumber+1;
+		} else {
+			return false;
+		}
+		
+	}
 	
 	
 	function answersLoop(currentQuestion) {
@@ -63,15 +75,16 @@ $("document").ready(function() {
 		if(correctAnswer == checked) {
 		 	runningScore++;
 		 	console.log(runningScore);
-			$(".running").html("Running Score: " + runningScore +" out of 5")
+			$(".running").html("Running Score: " + runningScore +" correct out of 5")
 		} else {
-			$(".running").html("Running Score: " + runningScore + " out of 5");
+			$(".running").html("Running Score: " + runningScore + " correct out of 5");
 		}
 	}
 		
 	
 	$('.start-button').click(function(event) {
 		event.preventDefault();
+		$('.what-number').append("#1 of 5");
 		$(".home").hide("slow");
 		var currentQuestion = myQuestions[currentQuestionIndex];
 		$('.current-question').append(currentQuestion.questionText);
@@ -97,14 +110,23 @@ $("document").ready(function() {
 
 
 	$(".next").click(function () {
+		
 		$(".correct").hide("slow");
 		$(".next").hide("slow");
-		currentQuestionIndex ++;
+		
+		currentQuestionIndex = currentNumber(currentQuestionIndex, myQuestions);
+		if(currentNumber == 1 || 2 || 3 || 4 || 5) {
+			console.log("number");
+		} else {
+			$('finished').append("You finished! Your final score is " + runningScore)
+		}
+		//	)
+		$(".what-number").html("# " + (currentQuestionIndex + 1) + " of 5");
 		var currentQuestion = myQuestions[currentQuestionIndex];
 		var correctAnswer = currentQuestion.answers[currentQuestion.correctAnswersIndex];
-		$(".current-question").html(" ");
-		$(".current-question").html(currentQuestion.questionText);
-		$(".current-question").show("slow");
+		var currentQuestionElement = $('.current-question');
+		currentQuestionElement.html(currentQuestion.questionText);
+		currentQuestionElement.show("slow");
 		$('.current-answers').html(" ");
 		answersLoop(currentQuestion);
 		$('.current-answers').show('slow');
