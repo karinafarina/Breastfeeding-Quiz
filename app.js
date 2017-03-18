@@ -40,8 +40,7 @@ var runningScore = 0;
 $("document").ready(function() {
 	var checked = "";
 	
-	//var correctAnswer = currentQuestion.answers[currentQuestion.correctAnswersIndex];
-
+	
 	function answersLoop(currentQuestion) {
 		for(var i = 0; i<currentQuestion.answers.length; i++) {
 			$('.current-answers').append("<li><input type='radio' name='A' value = '" + i + "'>" + currentQuestion.answers[i] + "</li>");
@@ -51,9 +50,22 @@ $("document").ready(function() {
 	function correctOrNot(checked, correctAnswer, currentQuestion) {
 		if (checked == correctAnswer) {
 		 	$('.correct').html("You are correct!");
+		 	
 		} else {
 			$('.correct').html("Incorrect<br> The correct answer is:<br>" + currentQuestion.answers[correctAnswer]);
 
+
+		}
+	}
+
+	function currentScore(correctAnswer, checked) {
+
+		if(correctAnswer == checked) {
+		 	runningScore++;
+		 	console.log(runningScore);
+			$(".running").html("Running Score: " + runningScore +" out of 5")
+		} else {
+			$(".running").html("Running Score: " + runningScore + " out of 5");
 		}
 	}
 		
@@ -65,6 +77,7 @@ $("document").ready(function() {
 		$('.current-question').append(currentQuestion.questionText);
 		answersLoop(currentQuestion);
 		$(".home").hide("slow");
+
 	});
 	
 	$(".current-answers").click(function() {
@@ -77,6 +90,7 @@ $("document").ready(function() {
 		//Use the value to check if it's the same as "correctAnswer".
 		console.log(checked, correctAnswer, currentQuestion);
 		correctOrNot(checked, correctAnswer, currentQuestion);
+		currentScore(correctAnswer, checked);
 		$(".correct").show("slow");
 		$(".next").show("slow");
 	});
