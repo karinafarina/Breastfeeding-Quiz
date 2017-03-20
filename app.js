@@ -37,19 +37,15 @@ var currentQuestionIndex = 0;
 
 var runningScore = 0;
 
-var whatNumber = 1;
+var whatNumber = 0;
 //render question to page
 $("document").ready(function() {
 	var checked = "";
 
-	function currentNumber(whatNumber, myQuestions) {
+	function isNotfinished(whatNumber, myQuestions) {
 
-		if(whatNumber < myQuestions.length -1) {
-			return whatNumber+1;
-		} else {
-			return false;
-		}
-		
+		return whatNumber < myQuestions.length;
+
 	}
 	
 	
@@ -109,27 +105,42 @@ $("document").ready(function() {
 	});
 
 
-	$(".next").click(function () {
+	$(".next").click(function() {
 		
 		$(".correct").hide("slow");
 		$(".next").hide("slow");
-		
-		currentQuestionIndex = currentNumber(currentQuestionIndex, myQuestions);
-		if(currentNumber == 1 || 2 || 3 || 4 || 5) {
-			console.log("number");
+		currentQuestionIndex++;
+
+		if(isNotfinished(currentQuestionIndex, myQuestions)) {
+
+			console.log(currentQuestionIndex, "currentQuestionIndex");
+			$(".what-number").html("# " + (currentQuestionIndex + 1) + " of 5");
+			var currentQuestion = myQuestions[currentQuestionIndex];
+			var correctAnswer = currentQuestion.answers[currentQuestion.correctAnswersIndex];
+			console.log(correctAnswer);
+			var currentQuestionElement = $('.current-question');
+			currentQuestionElement.html(currentQuestion.questionText);
+			currentQuestionElement.show("slow");
+			$('.current-answers').html(" ");
+			answersLoop(currentQuestion);
+			$('.current-answers').show('slow');
 		} else {
-			$('finished').append("You finished! Your final score is " + runningScore)
+			console.log('end-button');
+			$('.what-number').hide("fast");
+			$('.end-button').show("slow");
 		}
-		//	)
-		$(".what-number").html("# " + (currentQuestionIndex + 1) + " of 5");
-		var currentQuestion = myQuestions[currentQuestionIndex];
-		var correctAnswer = currentQuestion.answers[currentQuestion.correctAnswersIndex];
-		var currentQuestionElement = $('.current-question');
-		currentQuestionElement.html(currentQuestion.questionText);
-		currentQuestionElement.show("slow");
-		$('.current-answers').html(" ");
-		answersLoop(currentQuestion);
-		$('.current-answers').show('slow');
+
 	});
+
+	$('.end-button').click(function() {
+		$('.finished').append("You finished! Your final score is " + runningScore + " out of 5");
+		$('end-button').remove();
+	})
 		
 });
+
+
+
+
+
+
