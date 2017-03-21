@@ -37,14 +37,14 @@ var currentQuestionIndex = 0;
 
 var runningScore = 0;
 
-var whatNumber = 0;
+
 //render question to page
 $("document").ready(function() {
 	var checked = "";
 
-	function isNotfinished(whatNumber, myQuestions) {
+	function isNotfinished(currentQuestionIndex, myQuestions) {
 
-		return whatNumber < myQuestions.length;
+		return currentQuestionIndex < myQuestions.length;
 
 	}
 	
@@ -79,6 +79,14 @@ $("document").ready(function() {
 		
 	
 	$('.start-button').click(function(event) {
+		//$('.finished').hide('fast');
+		$('.what-number').html(' ');
+		$('.what-number').show('fast');
+		$('.current-question').html(' ');
+		$('.current-question').show('fast');
+		$('.current-answers').html(' ');
+		$('.current-answers').show('fast');
+		console.log("starting")
 		event.preventDefault();
 		$('.what-number').append("#1 of 5");
 		$(".home").hide("slow");
@@ -86,9 +94,12 @@ $("document").ready(function() {
 		$('.current-question').append(currentQuestion.questionText);
 		answersLoop(currentQuestion);
 		$(".home").hide("slow");
+		
 
 	});
 	
+	
+
 	$(".current-answers").click(function() {
 		checked = $("input[name=A]:checked").val();
 		var currentQuestion = myQuestions[currentQuestionIndex];
@@ -101,7 +112,13 @@ $("document").ready(function() {
 		correctOrNot(checked, correctAnswer, currentQuestion);
 		currentScore(correctAnswer, checked);
 		$(".correct").show("slow");
-		$(".next").show("slow");
+		
+		if(currentQuestionIndex === myQuestions.length-1) {
+			$('.end-button').show('slow');
+
+		} else { 
+			$(".next").show("slow");
+		}
 	});
 
 
@@ -124,18 +141,28 @@ $("document").ready(function() {
 			$('.current-answers').html(" ");
 			answersLoop(currentQuestion);
 			$('.current-answers').show('slow');
+
 		} else {
 			console.log('end-button');
 			$('.what-number').hide("fast");
 			$('.end-button').show("slow");
-		}
 
+		}
 	});
 
 	$('.end-button').click(function() {
-		$('.finished').append("You finished! Your final score is " + runningScore + " out of 5");
-		$('end-button').remove();
-	})
+		$('.finished').append("You finished! Your final score is " + runningScore + " out of 5. Press start button to play again.");
+		$('.what-number').hide('fast');
+		$('.correct').hide('fast');
+		$('.end-button').hide('slow');
+		
+		$('.home').show('slow');
+		currentQuestionIndex = 0;
+	
+
+	});
+
+
 		
 });
 

@@ -34,17 +34,22 @@ main {
 
 }
 
+.temp {
+	display: none;
+}
+
 form {
 	text-align: left;
 }
 
 .current-question {
 	text-align: center;
+	font-size: 30px;
 }
 
 .correct {
 	text-align: center;
-	font-size: 20px;
+	font-size: 30px;
 }
 
 .next {
@@ -52,6 +57,10 @@ form {
 	display: none;
 }
 
+.finished {
+	margin-top: 30px;
+	font-size: 25px;
+}
 .end-button {
 	display: none;
 }
