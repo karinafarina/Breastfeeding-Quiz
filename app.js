@@ -52,6 +52,7 @@ $("document").ready(function() {
 	function answersLoop(currentQuestion) {
 		for(var i = 0; i<currentQuestion.answers.length; i++) {
 			$('.current-answers').append("<li><input type='radio' name='A' value = '" + i + "'>" + currentQuestion.answers[i] + "</li>");
+			
 		}
 	}
 
@@ -99,12 +100,13 @@ $("document").ready(function() {
 	});
 	
 	
-
-	$(".current-answers").click(function() {
+	$('.current-answers').on("click", "input[name=A]:checked", function() {
+		//Get the value of the checked radio button.
 		checked = $("input[name=A]:checked").val();
 		var currentQuestion = myQuestions[currentQuestionIndex];
 		var correctAnswer = currentQuestion.correctAnswersIndex;
-		//Get the value of the checked radio button.
+		$(this).closest('li');
+
 		$(".current-question").hide("slow");
 		$(".current-answers").hide("slow");
 		//Use the value to check if it's the same as "correctAnswer".
