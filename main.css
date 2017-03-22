@@ -1,41 +1,65 @@
 * {
 	box-sizing: border-box;
+
 }
+
 
 .container {
 	font-family: 'Roboto', sans-serif;
-	width: 500px;
+	font-weight: 900;
+	width: 900px;
 	margin: auto;
-	color: blue;
+	color: black;
 	text-align: center;
-	height: 700px;height: 
-	background color: beige;
+	height: 800px;height: 
+	border: 2px solid black;
+	position: relative;
+	
+}
+
+.container::after {
+	content: "";
+	background: url("http://images.parents.mdpcdn.com/sites/parents.com/files/images/550_102385623.jpg");
+	opacity: 0.5;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	z-index: -1;  
+	background-repeat: no-repeat;
+	background-color: #ffffb3;
+	background-size: cover;
 	border: 2px solid black;
 }
 
-
-
 header {
 	height: 15%;
-	border-bottom: solid black 2px;
-	
-	font-size: 20px;
+	margin-top: 25px;
+	font-size: 40px;
+	text-shadow: 2px 2px #ffccff;
 }
+
+
 
 main {
 	margin-top: 50px;
-	height: 70%;
+	height: 65%;
+
 
 }
 
-.start {
-	margin-top: 50px;
-	size: 200px;
 
+
+.start-button {
+	border-radius: 12px;
+	font-size: 50px;
+	background-color:#ffccff ;
+	margin-top: 175px;
 }
 
-.temp {
-	display: none;
+.what-number {
+	font-size: 50px;
 }
 
 form {
@@ -47,14 +71,32 @@ form {
 	font-size: 30px;
 }
 
+ul {
+	margin-top: 25px;
+	margin-left: 150px;
+	
+}
+li {
+	list-style-type: none;
+	font-size: 20px;
+}
+
 .correct {
+	margin-top: 30px;
 	text-align: center;
 	font-size: 30px;
 }
 
 .next {
-	margin-top: 50px;
+	margin-top: 75px;
 	display: none;
+	color: #fff;
+	box-shadow: : 0 10px #27496d;
+  	background-color: #6496c8;
+  	border: none;
+  	border-radius: 15px;
+  	font-size: 30px;
+  	
 }
 
 .finished {
@@ -63,13 +105,15 @@ form {
 }
 .end-button {
 	display: none;
+	color: #fff;
+	box-shadow: : 0 10px #27496d;
+  	background-color: #6496c8;
+  	border: none;
+  	border-radius: 15px;
+  	font-size: 30px;
 }
 
-footer {
-	
-	}
-
 .running{
-	margin-top: 30px;
-	
+	font-size: 45px;
+	text-shadow: 2px 2px #ffccff;
 }

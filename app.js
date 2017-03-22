@@ -79,7 +79,7 @@ $("document").ready(function() {
 		
 	
 	$('.start-button').click(function(event) {
-		//$('.finished').hide('fast');
+		$('.finished').html(' ');
 		$('.what-number').html(' ');
 		$('.what-number').show('fast');
 		$('.current-question').html(' ');
@@ -88,7 +88,7 @@ $("document").ready(function() {
 		$('.current-answers').show('fast');
 		console.log("starting")
 		event.preventDefault();
-		$('.what-number').append("#1 of 5");
+		$('.what-number').append("Number 1 of 5");
 		$(".home").hide("slow");
 		var currentQuestion = myQuestions[currentQuestionIndex];
 		$('.current-question').append(currentQuestion.questionText);
@@ -131,7 +131,7 @@ $("document").ready(function() {
 		if(isNotfinished(currentQuestionIndex, myQuestions)) {
 
 			console.log(currentQuestionIndex, "currentQuestionIndex");
-			$(".what-number").html("# " + (currentQuestionIndex + 1) + " of 5");
+			$(".what-number").html("Number" +(currentQuestionIndex + 1) + " of 5");
 			var currentQuestion = myQuestions[currentQuestionIndex];
 			var correctAnswer = currentQuestion.answers[currentQuestion.correctAnswersIndex];
 			console.log(correctAnswer);
