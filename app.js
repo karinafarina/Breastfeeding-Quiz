@@ -133,7 +133,7 @@ $("document").ready(function() {
 		if(isNotfinished(currentQuestionIndex, myQuestions)) {
 
 			console.log(currentQuestionIndex, "currentQuestionIndex");
-			$(".what-number").html("Number" +(currentQuestionIndex + 1) + " of 5");
+			$(".what-number").html("Number " +(currentQuestionIndex + 1) + " of 5");
 			var currentQuestion = myQuestions[currentQuestionIndex];
 			var correctAnswer = currentQuestion.answers[currentQuestion.correctAnswersIndex];
 			console.log(correctAnswer);
