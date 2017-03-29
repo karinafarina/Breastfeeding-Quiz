@@ -16,14 +16,14 @@ var myQuestions = [
 	},
 	{
 		name: "Third question",
-		questionText: "How often should I pump after leaving the hospital?",
-		answers: ["A. Three times per day after nursing", "B. Three times per day before nursing", "C. After every nursing session", "D. Avoid the pump until two weeks before returning to work and just nurse on demand."],
+		questionText: "Do I need to pump after baby is born and if so how often?",
+		answers: ["A. Yes. Three times per day after nursing", "B. Yes. Three times per day before nursing", "C. Yes. After every nursing session", "D. No. Pumping is not normally necessary until two weeks before returning to work. Just nurse on demand."],
 		correctAnswersIndex: 3
 	},
 	{
 		name: "Fourth question",
-		questionText: "What equipment or supplements are necesary for succesful breastfeeding.",
-		answers: ["A. A nursing chair and stool and a nursing pillow.",	"B. Probiotics, Omega 3's, oatmeal, fenugreek, brewer's yeast and Mother's Milk Tea.", "C. Your baby and your breasts.", "D. A breast-pump, tubing and bottles."],
+		questionText: "What equipment or supplements if any are necesary for succesful breastfeeding.",
+		answers: ["A. A nursing chair and stool and a nursing pillow.",	"B. Probiotics, Omega 3's, oatmeal, fenugreek, brewer's yeast and Mother's Milk Tea.", "C. All you need are your baby and your breasts.", "D. A breast-pump, tubing and bottles."],
 		correctAnswersIndex: 2
 	},
 	{
