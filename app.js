@@ -22,13 +22,13 @@ var myQuestions = [
 	},
 	{
 		name: "Fourth question",
-		questionText: "What equipment or supplements if any are necesary for succesful breastfeeding.",
+		questionText: "What equipment or supplements if any are necessary for successful breastfeeding.",
 		answers: ["A. A nursing chair and stool and a nursing pillow.",	"B. Probiotics, Omega 3's, oatmeal, fenugreek, brewer's yeast and Mother's Milk Tea.", "C. All you need are your baby and your breasts.", "D. A breast-pump, tubing and bottles."],
 		correctAnswersIndex: 2
 	},
 	{
 		name: "Fifth question",
-		questionText: "If I have an alchoholic beverage, when do I need to 'pump and dump'.",
+		questionText: "If I have an alcoholic beverage, when do I need to 'pump and dump'.",
 		answers: ["A. Right away.", "B. Never, just wait one hour per drink for your liver to metabolize it out of your blood and milk.", "C. An hour after consumption.", "D. Right before nursing."],
 		correctAnswersIndex: 1
 	}
