@@ -81,6 +81,7 @@ $("document").ready(function() {
 	
 	$('.start-button').click(function(event) {
 		$('.finished').html(' ');
+		$('.running').html(' ');
 		$('.what-number').html(' ');
 		$('.what-number').show('fast');
 		$('.current-question').html(' ');
