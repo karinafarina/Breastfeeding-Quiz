@@ -68,20 +68,20 @@ $("document").ready(function() {
 	}
 
 	function currentScore(correctAnswer, checked) {
-
 		if(correctAnswer == checked) {
 		 	runningScore++;
 		 	console.log(runningScore);
-			$(".running").html("Running Score: " + runningScore +" correct out of 5")
+			$(".running").html("<h2>" + "Running Score: " + runningScore +" correct out of 5" + "</h2>");
 		} else {
-			$(".running").html("Running Score: " + runningScore + " correct out of 5");
+			$(".running").html("<h2>" + "Running Score: " + runningScore + " correct out of 5" + "</h2>");
 		}
 	}
 		
 	
 	$('.start-button').click(function(event) {
 		$('.finished').html(' ');
-		$('.running').html(' ');
+		runningScore = 0;
+		$(".running").html("<h2>" + "Running Score: " + runningScore +" correct out of 5" + "</h2>");
 		$('.what-number').html(' ');
 		$('.what-number').show('fast');
 		$('.current-question').html(' ');
